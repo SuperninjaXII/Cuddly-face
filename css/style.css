@@ -1,0 +1,87 @@
+@font-face {
+    font-family: cuddlyface;
+    src: url('/fonts/Baloo-Regular.ttf');
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+h1 {
+  font-family: cuddlyface;
+  color: #3D5168;
+}
+.profile-container {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.profile-pic {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .profile-container {
+        max-width: 150px;
+    }
+}
+
+/* glitch effevt on profile*/
+.profile-container.pixelate .profile-pic {
+    animation: pixelate 1s steps(10) forwards;
+}
+
+@keyframes pixelate {
+    0% {
+        filter: none;
+    }
+    50% {
+        filter: contrast(0.5) brightness(1.5) saturate(1.5);
+        transform: scale(1.05);
+    }
+    100% {
+        filter: contrast(0.5) brightness(1.5) saturate(1.5) blur(3px);
+    }
+}
+
+.profile-container.glitch .profile-pic {
+    animation: color-glitch 1s infinite;
+}
+
+@keyframes color-glitch {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(180deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* footer css */
+.footer {
+  background-color: #f2f2f2; 
+  padding: 10px 0;
+  position: fixed; 
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
