@@ -1,4 +1,3 @@
-alert('ji')
 document.querySelector('.profile-container').addEventListener('click', function() {
   // Remove any existing effect classes
   this.classList.remove('glitch', 'pixelate', 'glow');
