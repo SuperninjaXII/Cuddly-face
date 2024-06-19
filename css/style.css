@@ -1,147 +1,145 @@
 @font-face {
-    font-family: cuddlyface;
-    src: url('/fonts/Baloo-Regular.ttf');
+  font-family: cuddlyface;
+  src: url("/fonts/Baloo-Regular.ttf");
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
 }
 
 h1 {
-    font-family: cuddlyface;
-    color: #3D5168;
+  font-family: cuddlyface;
+  color: #3d5168;
 }
 
 .profile-container {
-    width: 100%;
-    max-width: 300px;
-    padding: 10px;
-    box-sizing: border-box;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .profile-pic {
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 600px) {
-    .profile-container {
-        max-width: 150px;
-    }
+  .profile-container {
+    max-width: 150px;
+  }
 }
 
 /* glitch effevt on profile*/
 .profile-container.pixelate .profile-pic {
-    animation: pixelate 1s steps(10) forwards;
+  animation: pixelate 1s steps(10) forwards;
 }
 
 @keyframes pixelate {
-    0% {
-        filter: none;
-    }
+  0% {
+    filter: none;
+  }
 
-    50% {
-        filter: contrast(0.5) brightness(1.5) saturate(1.5);
-        transform: scale(1.05);
-    }
+  50% {
+    filter: contrast(0.5) brightness(1.5) saturate(1.5);
+    transform: scale(1.05);
+  }
 
-    100% {
-        filter: contrast(0.5) brightness(1.5) saturate(1.5) blur(3px);
-    }
+  100% {
+    filter: contrast(0.5) brightness(1.5) saturate(1.5) blur(3px);
+  }
 }
 
 .profile-container.glitch .profile-pic {
-    animation: color-glitch 1s infinite;
+  animation: color-glitch 1s infinite;
 }
 
 @keyframes color-glitch {
-    0% {
-        filter: hue-rotate(0deg);
-    }
+  0% {
+    filter: hue-rotate(0deg);
+  }
 
-    50% {
-        filter: hue-rotate(180deg);
-    }
+  50% {
+    filter: hue-rotate(180deg);
+  }
 
-    100% {
-        filter: hue-rotate(360deg);
-    }
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
 
 .skills-container {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    width: 100svw;
-    height: 70svh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 100svw;
+  height: 70svh;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .skills-container h1 {
-    font-size: 2.2rem;
-    text-align: center;
+  font-size: 2.2rem;
+  text-align: center;
 }
 
 .skills-container .skill {
-    display: flex;
-    padding: 2svw;
-    background: white;
+  display: flex;
+  padding: 2svw;
+  background: white;
 }
 
 .skill .name {
-    font-size: 2rem;
-    font-family: cuddlyface;
+  font-size: 2rem;
+  font-family: cuddlyface;
 
-    margin-top: auto;
-    margin-bottom: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .skill .level-container {
-    --level-container-width: 70svw;
-    --level-container-height: 2svh;
-    margin: auto;
-    width: var(--level-container-width);
-    height: var(--level-container-height);
+  --level-container-width: 70svw;
+  --level-container-height: 2svh;
+  margin: auto;
+  width: var(--level-container-width);
+  height: var(--level-container-height);
 }
 
 .level-container .level {
-    width: calc(var(--level-container-width)/8);
-    height: var(--level-container-height);
-    border-radius: 5svw;
-    background-color: #3D5168;
-
+  width: calc(var(--level-container-width) / 8);
+  height: var(--level-container-height);
+  border-radius: 5svw;
+  background-color: #3d5168;
 }
 
 .skill label {
-    margin: auto;
-    font-size: 1.6rem;
-    font-family: sans-serif;
-    font-weight: 200;
-    font-style: italic;
+  margin: auto;
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  font-weight: 200;
+  font-style: italic;
 }
 
 /* footer css */
 .footer {
-    background-color: #f2f2f2;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+  background-color: #f2f2f2;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .container {
-    width: 90%;
-    margin: 0 auto;
+  width: 90%;
+  margin: 0 auto;
 }
