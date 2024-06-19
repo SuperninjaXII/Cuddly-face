@@ -12,3 +12,13 @@ document.querySelector('.profile-container').addEventListener('click', function(
     this.classList.remove(effect);
   }, 3000);
 });
+
+//gsap loading animation
+animateLoadingBar=()=>{
+  gsap.to(".level",{
+    width:"70svw",
+    background:"#537484",
+  duration:2
+  })
+}
+animateLoadingBar()

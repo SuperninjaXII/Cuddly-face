@@ -100,16 +100,35 @@ h1 {
 }
 
 .skill .name {
+    font-size: 2rem;
+    font-family: cuddlyface;
+
     margin-top: auto;
     margin-bottom: auto;
 }
 
-.skill .level {
+.skill .level-container {
+    --level-container-width: 70svw;
+    --level-container-height: 2svh;
     margin: auto;
-    width: 70svw;
-    height: 2svh;
-    border-radius: 5pt;
+    width: var(--level-container-width);
+    height: var(--level-container-height);
+}
+
+.level-container .level {
+    width: calc(var(--level-container-width)/8);
+    height: var(--level-container-height);
+    border-radius: 5svw;
     background-color: #3D5168;
+
+}
+
+.skill label {
+    margin: auto;
+    font-size: 1.6rem;
+    font-family: sans-serif;
+    font-weight: 200;
+    font-style: italic;
 }
 
 /* footer css */
