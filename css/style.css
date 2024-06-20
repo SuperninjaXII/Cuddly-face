@@ -2,6 +2,7 @@
     font-family: cuddlyface;
     src: url('/fonts/Baloo-Regular.ttf');
 }
+
 body {
     display: flex;
     flex-direction: column;
@@ -13,9 +14,10 @@ body {
 }
 
 h1 {
-  font-family: cuddlyface;
-  color: #3D5168;
+    font-family: cuddlyface;
+    color: #3D5168;
 }
+
 .profile-container {
     width: 100%;
     max-width: 300px;
@@ -46,10 +48,12 @@ h1 {
     0% {
         filter: none;
     }
+
     50% {
         filter: contrast(0.5) brightness(1.5) saturate(1.5);
         transform: scale(1.05);
     }
+
     100% {
         filter: contrast(0.5) brightness(1.5) saturate(1.5) blur(3px);
     }
@@ -63,25 +67,62 @@ h1 {
     0% {
         filter: hue-rotate(0deg);
     }
+
     50% {
         filter: hue-rotate(180deg);
     }
+
     100% {
         filter: hue-rotate(360deg);
     }
 }
 
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100svw;
+    height: 70svh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+}
+
+.skills-container h1 {
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+.skills-container .skill {
+    display: flex;
+    padding: 2svw;
+    background: white;
+}
+
+.skill .name {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.skill .level {
+    margin: auto;
+    width: 70svw;
+    height: 2svh;
+    border-radius: 5pt;
+    background-color: #3D5168;
+}
+
 /* footer css */
 .footer {
-  background-color: #f2f2f2; 
-  padding: 10px 0;
-  position: fixed; 
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+    background-color: #f2f2f2;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .container {
-  width: 90%;
-  margin: 0 auto;
+    width: 90%;
+    margin: 0 auto;
 }
