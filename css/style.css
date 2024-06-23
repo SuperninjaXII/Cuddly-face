@@ -3,39 +3,59 @@
   src: url("/fonts/Baloo-Regular.ttf");
 }
 
+:root {
+  --primary: #72ffd0;
+  --secondary: #7285ff;
+  --tertiary: #ff9872;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   margin: 0;
-  background-color: #f0f0f0;
+
+}
+
+header {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 60svh;
+  background-color: var(--secondary);
+  border-bottom-left-radius: 50vh;
 }
 
 h1 {
   font-family: cuddlyface;
-  color: #3d5168;
+
 }
 
 .profile-container {
-  width: 100%;
-  max-width: 300px;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100svw;
   box-sizing: border-box;
 }
 
 .profile-pic {
-  width: 100%;
+  width: 40svw;
   height: auto;
   border-radius: 50%;
   border: 2px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+.profile-details .name {
+  font-size: 1.7rem;
+  color: white;
 }
 
 @media (max-width: 600px) {
   .profile-container {
-    max-width: 150px;
+    max-width: 70svw;
   }
 }
 
@@ -80,7 +100,6 @@ h1 {
 .skills-container {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
   width: 100svw;
   height: 70svh;
   overflow-x: hidden;
@@ -108,17 +127,17 @@ h1 {
 
 .skill .level-container {
   --level-container-width: 70svw;
-  --level-container-height: 2svh;
+  --level-container-height: 1svh;
   margin: auto;
   width: var(--level-container-width);
   height: var(--level-container-height);
 }
 
 .level-container .level {
-  width: calc(var(--level-container-width) / 8);
+  width: calc(var(--level-container-width));
   height: var(--level-container-height);
   border-radius: 5svw;
-  background-color: #3d5168;
+  background-color: var(--secondary);
 }
 
 .skill label {
