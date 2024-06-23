@@ -118,7 +118,7 @@ h1 {
 }
 
 .skill .name {
-  font-size: 2rem;
+  font-size: 1.1rem;
   font-family: cuddlyface;
 
   margin-top: auto;
@@ -126,15 +126,16 @@ h1 {
 }
 
 .skill .level-container {
-  --level-container-width: 70svw;
+  --level-container-width: 60svw;
   --level-container-height: 1svh;
   margin: auto;
   width: var(--level-container-width);
   height: var(--level-container-height);
+  background: whitesmoke;
 }
 
 .level-container .level {
-  width: calc(var(--level-container-width));
+  width: calc(var(--level-container-width)/2);
   height: var(--level-container-height);
   border-radius: 5svw;
   background-color: var(--secondary);
@@ -142,7 +143,7 @@ h1 {
 
 .skill label {
   margin: auto;
-  font-size: 1.6rem;
+  font-size: 0.9rem;
   font-family: sans-serif;
   font-weight: 200;
   font-style: italic;

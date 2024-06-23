@@ -18,7 +18,7 @@ document
 //gsap loading animation
 animateLoadingBar = () => {
   gsap.to(".level", {
-    width: "70svw",
+    width: "40svw",
     background: "#537484",
     duration: 2,
   });
