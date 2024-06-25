@@ -101,7 +101,7 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 100svw;
-  height: 70svh;
+  /* height: 70svh; */
   overflow-x: hidden;
   overflow-y: scroll;
 }
