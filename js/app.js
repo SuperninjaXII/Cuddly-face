@@ -16,31 +16,28 @@ document
   });
 
 //gsap loading animation
-//
-const animateLoadingBar = (element, level) => {
-    // Select the element to animate
-    let el = document.querySelector(element);
-    
-    // Check if the element exists
-    if (!el) {
-        console.error(`Element ${element} not found`);
-        return;
-    }
-    
-    // Select the element where the level will be displayed
-    let domLevel = document.querySelector(".levelNum");
-    
-    // Loop to update the level
-    for (let i = 0; i < level; i++) {
-        domLevel.innerHTML = `${i + 1}`;
-    }
+const animateLoadingBar = (levelElement,labelElement, level,time) => {
+  
+  let Lel = document.querySelector(`${labelElement}`);
+  let counter = 0;
 
-    // Animate the element using GSAP
-    gsap.to(el, {
-        width: `calc(var(--level-container)*(${level}/100))`, 
-        background: "#537484",
-        duration: 3,
-    });
-};
+  const updateCounter = () => {
+    if (counter <= level) {
+      counter += 1;
+      Lel.innerText = counter;
+    } else {
+      clearInterval(interval); // Stop the interval when the level is reached
+    }
+  };
 
-// Call the function with the target element and the desired level
+  const interval = setInterval(updateCounter, time); 
+
+    gsap.to(levelElement,{
+
+    duration:6,
+    width:`calc(var(--level-container-width)*(${level}/100))`,
+
+    })
+}
+
+animateLoadingBar("#goLevel","#goLevelNum", 70,100);
