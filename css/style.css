@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: besake;
-  src: url("/fonts/Numaos-ARm57.otf");
+  src: url("/fonts/Blacksword.otf");
 }
 
 :root {
@@ -31,7 +31,9 @@ header {
   align-items: center;
   width: 100vw;
   height: 40svh;
-  background-image: url("/img/jute-2533318.jpg");
+  background-image: url("/img/earth.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   border-bottom-left-radius: 50vh;
 }
 
@@ -111,8 +113,10 @@ h1 {
 .skills-container {
   display: flex;
   flex-direction: column;
-  width: 100svw;
+  width: 98svw;
   height: 70svh;
+  padding-left: 1svw;
+  padding-right: 1svw;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -124,7 +128,8 @@ h1 {
 
 .skills-container .skill {
   display: flex;
-  padding: 2svw;
+  padding-left: 3svw;
+  padding-right: 3svw;
   background: white;
 }
 
@@ -153,7 +158,7 @@ h1 {
 
 .skill label {
   margin: auto;
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   font-family: besake;
   font-weight: 200;
   font-style: italic;

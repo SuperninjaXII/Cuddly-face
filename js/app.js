@@ -35,9 +35,11 @@ const animateLoadingBar = (levelElement,labelElement, level,time) => {
     gsap.to(levelElement,{
 
     duration:6,
-    width:`${level/2}svw`,
+    width:`${level*(60/100)}svw`,
 
     })
 }
 
 animateLoadingBar("#goLevel","#goLevelNum", 70,100);
+animateLoadingBar("#js","#jsLevel",98,99)
+animateLoadingBar("#py","#pyLevel",55,120)
