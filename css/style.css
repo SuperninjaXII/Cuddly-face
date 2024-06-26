@@ -3,6 +3,11 @@
   src: url("/fonts/AutumnFlowers-9YVZK.otf");
 }
 
+@font-face {
+  font-family: besake;
+  src: url("/fonts/Numaos-ARm57.otf");
+}
+
 :root {
   --primary: #72ffd0;
   --secondary: #7285ff;
@@ -124,8 +129,8 @@ h1 {
 }
 
 .skill .name {
-  font-size: 1.9rem;
-  font-family: serif;
+  font-size: 1.2rem;
+  font-family: besake;
 
   margin-top: auto;
   margin-bottom: auto;
@@ -139,7 +144,8 @@ h1 {
 }
 
 .level-container .level {
-  width: 1;
+  position: relative;
+  width: 1px;
   height: var(--level-container-height);
   border-radius: 5svw;
   background-color: var(--secondary);
@@ -148,7 +154,7 @@ h1 {
 .skill label {
   margin: auto;
   font-size: 0.9rem;
-  font-family: cuddlyface;
+  font-family: besake;
   font-weight: 200;
   font-style: italic;
 }

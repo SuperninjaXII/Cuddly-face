@@ -31,11 +31,11 @@ const animateLoadingBar = (levelElement,labelElement, level,time) => {
   };
 
   const interval = setInterval(updateCounter, time); 
-
+    
     gsap.to(levelElement,{
 
     duration:6,
-    width:`calc(var(--level-container-width)*(${level}/100))`,
+    width:`${level/2}svw`,
 
     })
 }
