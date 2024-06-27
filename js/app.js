@@ -1,3 +1,5 @@
+gsap.registerPlugin(ScrollTrigger) 
+
 document 
   .querySelector(".profile-container")
   .addEventListener("click", function () {
@@ -17,7 +19,8 @@ document
 
 //gsap loading animation
 const animateLoadingBar = (levelElement,labelElement, level,time) => {
-  
+  gsap.registerPlugin(ScrollTrigger);
+
   let Lel = document.querySelector(`${labelElement}`);
   let counter = 0;
 
@@ -33,11 +36,15 @@ const animateLoadingBar = (levelElement,labelElement, level,time) => {
   const interval = setInterval(updateCounter, time); 
     
     gsap.to(levelElement,{
-
     duration:6,
     width:`${level*(60/100)}svw`,
 
     })
+  gsap.fromTo(".skills-container",{opacity:0} ,{
+    scrollTrigger: '.skills-container',
+    duration:1.2,
+    opacity:1,
+});
 }
 
 animateLoadingBar("#goLevel","#goLevelNum", 70,100);

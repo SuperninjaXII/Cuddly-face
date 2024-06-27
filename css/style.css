@@ -114,7 +114,8 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 98svw;
-  height: 70svh;
+  margin-top: 10svh;
+  margin-bottom: 18svh;
   padding-left: 1svw;
   padding-right: 1svw;
   overflow-x: hidden;
@@ -162,6 +163,34 @@ h1 {
   font-family: besake;
   font-weight: 200;
   font-style: italic;
+}
+
+/*showcase*/
+.showcase {
+  display: flex;
+  flex-direction: column;
+  width: 98svw;
+  height: 70svh;
+}
+
+.showcase .project {
+  display: flex;
+  width: 98svw;
+  height: 30svh;
+  padding-right: 1svw;
+  padding-left: 1svw;
+  background-color: #f2f2f2;
+}
+
+.project img {
+  width: 30svw;
+  padding-right: 2svw;
+  border-bottom-right-radius: 24svw;
+}
+
+.project p {
+  font-size: 2.1rem;
+  font-family: besake;
 }
 
 /* footer css */
