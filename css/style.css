@@ -211,3 +211,26 @@ header {
   width: 90%;
   margin: 0 auto;
 }
+
+#movableButton {
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  position: fixed;
+  color: var(--light-10);
+  border: solid var(--light) 1.5pt;
+  cursor: pointer;
+  user-select: none;
+  touch-action: none;
+  transition: left 0.1s, top 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 30%;
+}
+
+#movableButton img {
+  height: 60%;
+  width: auto;
+  max-height: 100%;
+}
