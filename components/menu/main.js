@@ -104,7 +104,6 @@ const features = {
         }
         reader.readAsDataURL(bg);
       }
-      // Note: Profile picture handling would typically involve server-side processing
     }
   },
   theme: {
