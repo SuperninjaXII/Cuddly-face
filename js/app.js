@@ -51,7 +51,7 @@ animateLoadingBar("#goLevel","#goLevelNum", 70,100);
 animateLoadingBar("#js","#jsLevel",98,99)
 animateLoadingBar("#py","#pyLevel",55,120)
 
-
+/*the canvas */
 
 /*the feature of the movable btn*/
 const button = document.getElementById('movableButton'); 
