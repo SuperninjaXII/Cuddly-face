@@ -1,3 +1,5 @@
+gsap.registerPlugin(ScrollTrigger)
+
 document
   .querySelector(".profile-container")
   .addEventListener("click", function() {
@@ -17,6 +19,7 @@ document
 
 //gsap loading animation
 const animateLoadingBar = (levelElement, labelElement, level, time) => {
+  gsap.registerPlugin(ScrollTrigger);
 
   let Lel = document.querySelector(`${labelElement}`);
   let counter = 0;
@@ -33,84 +36,40 @@ const animateLoadingBar = (levelElement, labelElement, level, time) => {
   const interval = setInterval(updateCounter, time);
 
   gsap.to(levelElement, {
-
     duration: 6,
     width: `${level * (60 / 100)}svw`,
 
   })
+  gsap.fromTo(".skills-container", { opacity: 0 }, {
+    scrollTrigger: '.skills-container',
+    duration: 1.2,
+    opacity: 1,
+  });
 }
 
 animateLoadingBar("#goLevel", "#goLevelNum", 70, 100);
 animateLoadingBar("#js", "#jsLevel", 98, 99)
 animateLoadingBar("#py", "#pyLevel", 55, 120)
 
-//mechanics for movement for main menu {
-const button = document.getElementById('movableButton');
-let isHeld = false;
-let holdTimer;
-let isMoving = false;
-let initialX, initialY;
-let buttonX = window.innerWidth / 2 - 25;
-let buttonY = window.innerHeight / 2 - 25;
 
-button.style.left = `${buttonX}px`;
-button.style.top = `${buttonY}px`;
 
-button.addEventListener('mousedown', startHold);
-button.addEventListener('touchstart', startHold);
+/*the feature of the movable btn {*/
+// script.js
 
-button.addEventListener('mouseup', endHold);
-button.addEventListener('touchend', endHold);
+document.getElementById('movableButton').addEventListener('click', function() {
+  document.getElementById('settingsIframe').src = '../components/menu/setting.html'; // Replace with your actual settings file path
+  document.getElementById('popup').style.display = 'block';
+});
 
-document.addEventListener('mousemove', moveButton);
-document.addEventListener('touchmove', moveButton);
+document.getElementById('closePopup').addEventListener('click', function() {
+  document.getElementById('popup').style.display = 'none';
+  document.getElementById('settingsIframe').src = ''; // Clear iframe source when closing
+});
 
-function startHold(event) {
-  event.preventDefault();
-  initialX = event.clientX || event.touches[0].clientX;
-  initialY = event.clientY || event.touches[0].clientY;
-  holdTimer = setTimeout(() => {
-    isHeld = true;
-    isMoving = true;
-    button.style.cursor = 'grabbing';
-    if (navigator.vibrate) {
-      navigator.vibrate(50);
-    }
-  }, 1000);
-}
-
-function endHold(event) {
-  event.preventDefault();
-  clearTimeout(holdTimer);
-  if (isMoving) {
-    isHeld = false;
-    isMoving = false;
-    button.style.cursor = 'pointer';
-    const deltaX = (event.clientX || event.changedTouches[0].clientX) - initialX;
-    const deltaY = (event.clientY || event.changedTouches[0].clientY) - initialY;
-    buttonX += deltaX;
-    buttonY += deltaY;
-    button.style.left = `${buttonX}px`;
-    button.style.top = `${buttonY}px`;
+window.onclick = function(event) {
+  if (event.target === document.getElementById('popup')) {
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('settingsIframe').src = ''; // Clear iframe source when clicking outside
   }
-}
-
-function moveButton(event) {
-  if (!isHeld) return;
-
-  let x, y;
-  if (event.touches) {
-    x = event.touches[0].clientX;
-    y = event.touches[0].clientY;
-  } else {
-    x = event.clientX;
-    y = event.clientY;
-  }
-
-  const deltaX = x - initialX;
-  const deltaY = y - initialY;
-
-  button.style.left = `${buttonX + deltaX}px`;
-  button.style.top = `${buttonY + deltaY}px`;
-}
+};
 //end of movement mechanic }

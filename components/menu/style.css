@@ -1,0 +1,126 @@
+    :root {
+      --bg: #f2f2f7;
+      --text: #000000;
+      --container: #ffffff;
+      --input: #ffffff;
+      --button: #007AFF;
+      --button-text: #ffffff;
+      --radius: 10px;
+      --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      --font: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      --border: #c7c7cc;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+      margin: 0;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--container);
+      opacity: 0.9;
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    h1,
+    h2 {
+      color: var(--text);
+    }
+
+    .group {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: var(--container);
+      border-radius: var(--radius);
+    }
+
+    .input-wrap {
+      margin-bottom: 15px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-sizing: border-box;
+      background: var(--input);
+      color: var(--text);
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: var(--button);
+      color: var(--button-text);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    #notify {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .dark-theme {
+      --bg: #000000;
+      --text: #ffffff;
+      --container: #1c1c1e;
+      --input: #2c2c2e;
+      --button: #0a84ff;
+    }
+
+    .android {
+      --bg: #fafafa;
+      --text: #202124;
+      --container: #ffffff;
+      --input: #ffffff;
+      --button: #1a73e8;
+      --radius: 4px;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      --font: Roboto, Arial, sans-serif;
+      --border: #dadce0;
+      padding-inline: 17px;
+
+    }
+
+    .android.dark-theme {
+      --bg: #121212;
+      --text: #ffffff;
+      --container: #1c1c1e /* #1e1e1e*/;
+      --input: #2c2c2e;
+      --button: #3700B3;
+      --border: #c7c7dc; /*#2c2c2e*/;
+      padding-inline: 17px;
+    }

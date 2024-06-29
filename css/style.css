@@ -1,18 +1,24 @@
 @font-face {
-  font-family: cuddlyface;
-  src: url("/fonts/AutumnFlowers-9YVZK.otf");
-}
-
-@font-face {
   font-family: besake;
-  src: url("/fonts/Blacksword.otf");
+  src: url("/fonts/Newton\ Howard\ Font.ttf");
 }
 
 :root {
-  --primary: #72ffd0;
-  --secondary: #7285ff;
-  --tertiary: #ff9872;
-
+  --primary: #00C6CF;
+  --secondary: #068488;
+  --tertiary: #324B4C;
+  --dark-10: #121212;
+  --dark-20: #141414;
+  --dark-30: #353535;
+  --light: #ffffff;
+  --light-10: rgba(255, 255, 255, 0.8);
+  /* Adjusted for even spacing */
+  --light-20: rgba(255, 255, 255, 0.6);
+  /* Adjusted for even spacing */
+  --light-30: rgba(255, 255, 255, 0.4);
+  /* New level for even spacing */
+  --light-40: rgba(255, 255, 255, 0.2);
+  /* New level for even spacing */
   --level-container-width: 60svw;
   --level-container-height: 1svh;
 }
@@ -21,6 +27,8 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
+  background: var(--dark-10);
+  font-family: besake;
 
 }
 
@@ -37,10 +45,6 @@ header {
   border-bottom-left-radius: 50vh;
 }
 
-h1 {
-  font-family: cuddlyface;
-
-}
 
 .profile-container {
   display: flex;
@@ -114,7 +118,8 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 98svw;
-  height: 70svh;
+  margin-top: 10svh;
+  margin-bottom: 18svh;
   padding-left: 1svw;
   padding-right: 1svw;
   overflow-x: hidden;
@@ -124,19 +129,19 @@ h1 {
 .skills-container .heading {
   font-size: 2.8rem;
   text-align: center;
+  color: var(--light);
 }
 
 .skills-container .skill {
   display: flex;
   padding-left: 3svw;
   padding-right: 3svw;
-  background: white;
 }
 
 .skill .name {
   font-size: 1.2rem;
   font-family: besake;
-
+  color: var(--light);
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -145,7 +150,7 @@ h1 {
   margin: auto;
   width: var(--level-container-width);
   height: var(--level-container-height);
-  background: whitesmoke;
+  background: #121212;
 }
 
 .level-container .level {
@@ -161,12 +166,40 @@ h1 {
   font-size: 1.3rem;
   font-family: besake;
   font-weight: 200;
-  font-style: italic;
+  color: var(--light-20);
+}
+
+/*showcase*/
+.showcase {
+  display: flex;
+  flex-direction: column;
+  width: 98svw;
+  height: 70svh;
+}
+
+.showcase .project {
+  color: var(--light);
+  display: flex;
+  width: 98svw;
+  height: 70svh;
+  padding-right: 1svw;
+  padding-left: 1svw;
+}
+
+.project img {
+  width: 30svw;
+  padding-right: 2svw;
+  border-bottom-right-radius: 24svw;
+}
+
+.project p {
+  font-size: 2.1rem;
+  font-family: besake;
 }
 
 /* footer css */
 .footer {
-  background-color: #f2f2f2;
+  background-color: var(--light-10);
   padding: 10px 0;
   position: fixed;
   bottom: 0;
@@ -178,26 +211,66 @@ h1 {
   width: 90%;
   margin: 0 auto;
 }
-/* css for movable menu { */
-#movableButton {
-      width: 12vw;
-      height: 12vw;
-      border-radius: 50%;
-      position: absolute;
-      border: solid black 1.5pt;
-      cursor: pointer;
-      user-select: none;
-      touch-action: none;
-      transition: left 0.1s, top 0.1s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 30%;
-    }
+/* {*/
+/* styles.css */
 
-    #movableButton img {
-      height: 60%;
-      width: auto;
-      max-height: 100%;
-    }
-/* end of movable menu css */
+/* Button style */
+#movableButton {
+    width: 12vw;
+    height: 12vw;
+    border-radius: 50%;
+    position: absolute;
+    color: var(--light-10);
+    border: solid var(--light) 1.5pt;
+    cursor: pointer;
+    user-select: none;
+    touch-action: none;
+    transition: left 0.1s, bottom 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 85%;
+    bottom: 50%;
+    background-color: transparent;
+}
+
+#movableButton img {
+    height: 60%;
+    width: auto;
+    max-height: 100%;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0%;
+    top: 0%;
+    background-color: #fefefe;
+    width: 100%;
+    overflow: auto;
+}
+
+.popup-content {
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    width: 30pt;
+    height: 30pt;
+    color: #333;
+    cursor: pointer;
+    background: red;
+    border: solid teal 2px;
+  border-radius: 50%;
+  border-color: black ;
+}
+
+iframe {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+}
+/* } */
