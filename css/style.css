@@ -118,6 +118,7 @@ header {
   display: flex;
   flex-direction: column;
   width: 98svw;
+  height: 70svh;
   margin-top: 10svh;
   margin-bottom: 18svh;
   padding-left: 1svw;
@@ -172,7 +173,7 @@ header {
 /*showcase*/
 #cvs {
   width: 98svw;
-  height: 70svh;
+  height: 100svh;
 }
 
 /* footer css */
