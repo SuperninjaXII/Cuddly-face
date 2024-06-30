@@ -6,28 +6,32 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const particles = [];
-const numParticles = 200;
+const numParticles = 300;
 
 class Particle {
-    constructor(x, y, vx, vy) {
+    constructor(x, y, vx, vy,radius,red,blue,green,opacity) {
         this.x = x;
         this.y = y;
         this.vx = vx;
         this.vy = vy;
-        this.radius = 5;
+        this.radius = radius;
+        this.red = red;
+        this.green=green;
+        this.blue=blue;
+        this.opacity = opacity
     }
 
     update() {
         this.x += this.vx;
-        this.y += this.vy;
+        this.y -= this.vy;
     }
 
     draw() {
-        ctx.fillStyle = "#fff";
+        ctx.fillStyle = `rgba(${this.red},${this.green},${this.blue},${this.opacity})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
         ctx.fill();
-        ctx.stroke();
+        
     }
 
     isOffscreen() {
@@ -40,11 +44,27 @@ class Particle {
 
 // Initialize particles
 for (let i = 0; i < numParticles; i++) {
+    /*location*/
     let x = Math.random() * canvas.width;
     let y = Math.random() * canvas.height;
     let vx = (Math.random() - 0.5) * 2;
     let vy = (Math.random() - 0.5) * 2;
-    particles.push(new Particle(x, y, vx, vy));
+    /*color*/
+    let red = (Math.random()*255);
+    
+    let green = (Math.random()*255);
+    
+    let blue = (Math.random()*255);
+
+    /*size*/
+    let Z=(Math.random()*5);
+    let Alpha;
+    if(Z<2.5){
+        Alpha=(Math.random()*0.5)
+    }
+    /*spawning*/
+    particles.push(new Particle(x, y, vx, vy,Z,red,green,blue,Alpha));
+    
 }
 
 const loop = () => {
