@@ -1,3 +1,75 @@
+// Utility function to save all settings
+const saveSettings = () => {
+  const settings = {};
+  let filesToProcess = 0;
+  let filesProcessed = 0;
+
+  Object.keys(features).forEach(name => {
+    settings[name] = {};
+    features[name].settings.forEach(setting => {
+      const element = $(setting.id);
+      if (setting.type === 'file') {
+        const file = element.files[0];
+        if (file) {
+          filesToProcess++;
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            settings[name][setting.id] = e.target.result;
+            filesProcessed++;
+            if (filesProcessed === filesToProcess) {
+              finalizeSettings(settings);
+            }
+          };
+          reader.readAsDataURL(file);
+        } else {
+          settings[name][setting.id] = null;
+        }
+      } else {
+        settings[name][setting.id] = element.value;
+      }
+    });
+  });
+
+  if (filesToProcess === 0) {
+    finalizeSettings(settings);
+  }
+};
+
+const finalizeSettings = (settings) => {
+  localStorage.setItem('appSettings', JSON.stringify(settings));
+  notify.show('Settings saved successfully!');
+};
+
+// Utility function to load all settings from localStorage
+const loadSettings = () => {
+  const savedSettings = JSON.parse(localStorage.getItem('appSettings'));
+  if (!savedSettings) return;
+
+  Object.keys(features).forEach(name => {
+    if (savedSettings[name]) {
+      features[name].settings.forEach(setting => {
+        const element = $(setting.id);
+        if (setting.type === 'file') {
+          if (savedSettings[name][setting.id]) {
+            if (setting.id === 'profile-pic') {
+              // Display the saved profile picture
+              const img = create('img', { src: savedSettings[name][setting.id], alt: 'Profile Picture', style: 'max-width: 100px; max-height: 100px;' });
+              element.parentNode.appendChild(img);
+            } else if (setting.id === 'bg-pic') {
+              // Set the background image
+              document.body.style.backgroundImage = `url(${savedSettings[name][setting.id]})`;
+            }
+            notify.show(`${setting.label} loaded from saved settings.`);
+          }
+        } else {
+          element.value = savedSettings[name][setting.id];
+        }
+      });
+      features[name].apply();
+    }
+  });
+};
+
 // Utility functions
 const $ = (id) => document.getElementById(id);
 const create = (tag, attrs = {}, text = '') => {
@@ -50,6 +122,7 @@ const createInput = (setting) => {
   return wrap;
 };
 
+
 // Feature modules
 const features = {
   font: {
@@ -57,7 +130,7 @@ const features = {
     settings: [
       { id: "font-face", label: "Font Face", type: "select", options: ["Arial", "Helvetica", "Times New Roman", "Courier New"] },
       { id: "font-style", label: "Font Style", type: "select", options: ["normal", "italic", "oblique"] },
-      { id: "font-size", label: "Font Size", type: "range", min: 0, max: 50, step: 2, value: 20 }
+      { id: "font-size", label: "Font Size", type: "range", min: 0, max: 50, step: 2, value: 16 }
     ],
     render: function() {
       const group = create('div', { class: 'group' });
@@ -104,7 +177,14 @@ const features = {
         }
         reader.readAsDataURL(bg);
       }
-      // Note: Profile picture handling would typically involve server-side processing
+      const profilePic = $('profile-pic').files[0];
+      if (profilePic) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          parent.postMessage({ type: 'updateProfilePic', data: e.target.result }, '*');
+        };
+        reader.readAsDataURL(profilePic);
+      }
     }
   },
   theme: {
@@ -171,9 +251,13 @@ const app = (() => {
     // Enable all features by default
     enableFeatures(Object.keys(features));
 
+    loadSettings();
+
     $('save').addEventListener('click', () => {
+      saveSettings()
       Object.values(features).forEach(feature => feature.apply());
       notify.show('Settings saved successfully!');
+
     });
 
     // Initial theme setup

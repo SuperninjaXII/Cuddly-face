@@ -33,7 +33,6 @@ body {
 }
 
 header {
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -219,7 +218,7 @@ header {
     width: 12vw;
     height: 12vw;
     border-radius: 50%;
-    position: absolute;
+    position: fixed;
     color: var(--light-10);
     border: solid var(--light) 1.5pt;
     cursor: pointer;

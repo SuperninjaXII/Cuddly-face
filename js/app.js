@@ -1,3 +1,34 @@
+const $ = (id) => document.getElementById(id);
+
+// //logic for changing profile.pic {
+// window.addEventListener('message', (event) => {
+//   if (event.data.type === 'updateProfilePic') {
+//     const profilePic = $('profile-pic');
+//     profilePic.src = event.data.data;
+//   }
+// });
+// //}
+
+/*Popup utility {*/
+const Popup = function(btnid, src) {
+  $(`${btnid}`).addEventListener('click', function() {
+    $('settingsIframe').src = `${src}`;
+    $('popup').style.display = 'block';
+  });
+
+  $('closePopup').addEventListener('click', function() {
+    $('popup').style.display = 'none';
+    $('settingsIframe').src = '';
+  });
+
+  window.onclick = function(event) {
+    if (event.target === $('popup')) {
+      $('popup').style.display = 'none';
+      $('settingsIframe').src = '';
+    }
+  };
+}
+//end of movement mechanic }
 gsap.registerPlugin(ScrollTrigger)
 
 document
@@ -53,23 +84,6 @@ animateLoadingBar("#py", "#pyLevel", 55, 120)
 
 
 
-/*the feature of the movable btn {*/
-// script.js
 
-document.getElementById('movableButton').addEventListener('click', function() {
-  document.getElementById('settingsIframe').src = '../components/menu/setting.html'; // Replace with your actual settings file path
-  document.getElementById('popup').style.display = 'block';
-});
+Popup('movableButton', '../components/menu/setting.html')
 
-document.getElementById('closePopup').addEventListener('click', function() {
-  document.getElementById('popup').style.display = 'none';
-  document.getElementById('settingsIframe').src = ''; // Clear iframe source when closing
-});
-
-window.onclick = function(event) {
-  if (event.target === document.getElementById('popup')) {
-    document.getElementById('popup').style.display = 'none';
-    document.getElementById('settingsIframe').src = ''; // Clear iframe source when clicking outside
-  }
-};
-//end of movement mechanic }
