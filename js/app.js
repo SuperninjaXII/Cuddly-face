@@ -82,8 +82,6 @@ animateLoadingBar("#goLevel", "#goLevelNum", 70, 100);
 animateLoadingBar("#js", "#jsLevel", 98, 99)
 animateLoadingBar("#py", "#pyLevel", 55, 120)
 
+Popup(`movableButton`, '../components/menu/setting.html')
 
-
-
-Popup('movableButton', '../components/menu/setting.html')
 
