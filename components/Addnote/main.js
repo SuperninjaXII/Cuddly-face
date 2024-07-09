@@ -5,40 +5,44 @@
         const saveNoteBtn = $('saveNoteBtn');
         const notesContainer = $('notesContainer');
         const darkModeToggle = $('darkModeToggle');
-        const artifactView = $('artifactView');
-        const artifactContent = $('artifactContent');
+        const SavedNotePopView = $('SavedNotePopView');
+        const SavedNoteContent = $('SavedNoteContent');
         const overlay = $('overlay');
-        const closeArtifactBtn = artifactView.querySelector('.close-btn');
+        const closeSavedNoteBtn = SavedNotePopView.querySelector('.close-btn');
+        const editNoteBtn = $('editNoteBtn');
+        const deleteNoteBtn = $('deleteNoteBtn');
 
-        toggleBtn.onclick = function() {
-            noteApp.classList.toggle('hidden');
-        }
+        let currentNoteIndex = -1;
 
-        saveNoteBtn.onclick = function() {
+        toggleBtn.onclick = () => noteApp.classList.toggle('hidden');
+
+        saveNoteBtn.onclick = () => {
             const noteText = noteInput.value.trim();
             if (noteText) {
                 saveNote(noteText);
                 displayNotes();
                 noteInput.value = '';
             }
-        }
+        };
 
-        darkModeToggle.onclick = function() {
-            document.body.classList.toggle('dark-mode');
-        }
+        darkModeToggle.onclick = () => document.body.classList.toggle('dark-mode');
 
-        closeArtifactBtn.onclick = closeArtifact;
+        closeSavedNoteBtn.onclick = closeSavedNotePopView;
 
-        overlay.onclick = closeArtifact;
+        overlay.onclick = closeSavedNotePopView;
 
-        function closeArtifact() {
-            artifactView.classList.add('hidden');
+        editNoteBtn.onclick = editNote;
+
+        deleteNoteBtn.onclick = deleteNote;
+
+        function closeSavedNotePopView() {
+            SavedNotePopView.classList.add('hidden');
             overlay.classList.add('hidden');
         }
 
         function saveNote(note) {
             let notes = JSON.parse(localStorage.getItem('notes')) || [];
-            notes.unshift(note); // Add new note to the beginning
+            notes.unshift(note);
             localStorage.setItem('notes', JSON.stringify(notes));
         }
 
@@ -49,22 +53,50 @@
                 const noteElement = document.createElement('div');
                 noteElement.classList.add('note');
                 noteElement.textContent = shortenNote(note);
-                noteElement.onclick = function() {
-                    showArtifact(note);
-                }
+                noteElement.onclick = () => showSavedNotePopView(note, index);
                 notesContainer.appendChild(noteElement);
             });
         }
 
         function shortenNote(note, maxLength = 100) {
-            if (note.length <= maxLength) return note;
-            return note.substr(0, maxLength - 3) + '...';
+            return note.length <= maxLength ? note : note.substr(0, maxLength - 3) + '...';
         }
 
-        function showArtifact(note) {
-            artifactContent.textContent = note;
-            artifactView.classList.remove('hidden');
+        function showSavedNotePopView(note, index) {
+            SavedNoteContent.textContent = note;
+            currentNoteIndex = index;
+            SavedNotePopView.classList.remove('hidden');
             overlay.classList.remove('hidden');
+        }
+
+        function editNote() {
+            const currentContent = SavedNoteContent.textContent;
+            SavedNoteContent.innerHTML = `<textarea id="editNoteText">${currentContent}</textarea>`;
+            editNoteBtn.textContent = 'Save';
+            editNoteBtn.onclick = saveEditedNote;
+        }
+
+        function saveEditedNote() {
+            const editedNote = $('editNoteText').value.trim();
+            if (editedNote) {
+                let notes = JSON.parse(localStorage.getItem('notes')) || [];
+                notes[currentNoteIndex] = editedNote;
+                localStorage.setItem('notes', JSON.stringify(notes));
+                SavedNoteContent.textContent = editedNote;
+                displayNotes();
+            }
+            editNoteBtn.textContent = 'Edit';
+            editNoteBtn.onclick = editNote;
+        }
+
+        function deleteNote() {
+            if (confirm('Are you sure you want to delete this note?')) {
+                let notes = JSON.parse(localStorage.getItem('notes')) || [];
+                notes.splice(currentNoteIndex, 1);
+                localStorage.setItem('notes', JSON.stringify(notes));
+                displayNotes();
+                closeSavedNotePopView();
+            }
         }
 
         // Initial display of notes

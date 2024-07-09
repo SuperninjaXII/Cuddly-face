@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note Feature with Artifact View</title>
+    <title>Note</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <button id="toggleNoteApp" class="toggle-btn">Toggle Notes</button>
+   <button id="toggleNoteApp" class="toggle-btn">Toggle Notes</button>
     
     <div id="noteApp" class="note-app hidden">
         <button id="darkModeToggle">🌓</button>
@@ -17,10 +17,12 @@
         <button id="saveNoteBtn">Save Note</button>
     </div>
 
-    <div id="artifactView" class="SavedNotePopView hidden">
+    <div id="SavedNotePopView" class="SavedNotePopView hidden">
         <button class="close-btn">&times;</button>
         <h2>Note Details</h2>
-        <div id="artifactContent"></div>
+        <div id="SavedNoteContent"></div>
+        <button id="editNoteBtn" class="edit-btn">Edit</button>
+        <button id="deleteNoteBtn" class="delete-btn">Delete</button>
     </div>
 
     <div id="overlay" class="overlay hidden"></div>
