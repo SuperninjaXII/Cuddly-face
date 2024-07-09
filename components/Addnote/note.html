@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Feature with Artifact View</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <button id="toggleNoteApp" class="toggle-btn">Toggle Notes</button>
+    
+    <div id="noteApp" class="note-app hidden">
+        <button id="darkModeToggle">🌓</button>
+        <h1>Quick Notes</h1>
+        <textarea id="noteInput" placeholder="Enter your note here..."></textarea>
+        <div id="notesContainer" class="notes-container"></div>
+        <button id="saveNoteBtn">Save Note</button>
+    </div>
+
+    <div id="artifactView" class="SavedNotePopView hidden">
+        <button class="close-btn">&times;</button>
+        <h2>Note Details</h2>
+        <div id="artifactContent"></div>
+    </div>
+
+    <div id="overlay" class="overlay hidden"></div>
+    <script src="./main.js"></script>
+</body>
+</html>
