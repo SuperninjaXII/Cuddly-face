@@ -20,5 +20,5 @@
   --light-40: rgba(255, 255, 255, 0.2);
   /* New level for even spacing */
   --level-container-width: 60svw;
-  --level-container-height: 1svh;
+  --level-container-height: 0.8svh;
 }
