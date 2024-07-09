@@ -1,0 +1,24 @@
+@font-face {
+  font-family: besake;
+  src: url("/fonts/Newton\ Howard\ Font.ttf");
+}
+
+:root {
+  --primary: #00C6CF;
+  --secondary: #068488;
+  --tertiary: #324B4C;
+  --dark-10: #121212;
+  --dark-20: #141414;
+  --dark-30: #353535;
+  --light: #ffffff;
+  --light-10: rgba(255, 255, 255, 0.8);
+  /* Adjusted for even spacing */
+  --light-20: rgba(255, 255, 255, 0.6);
+  /* Adjusted for even spacing */
+  --light-30: rgba(255, 255, 255, 0.4);
+  /* New level for even spacing */
+  --light-40: rgba(255, 255, 255, 0.2);
+  /* New level for even spacing */
+  --level-container-width: 60svw;
+  --level-container-height: 1svh;
+}
