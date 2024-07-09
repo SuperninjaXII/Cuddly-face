@@ -1,0 +1,56 @@
+#movableButton {
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  position: fixed;
+  color: var(--light-10);
+  border: solid var(--light) 1.5pt;
+  cursor: pointer;
+  user-select: none;
+  touch-action: none;
+  transition: left 0.1s, bottom 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 85%;
+  bottom: 50%;
+  background-color: transparent;
+}
+
+#movableButton img {
+  height: 60%;
+  width: auto;
+  max-height: 100%;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0%;
+  top: 0%;
+  background-color: #fefefe;
+  width: 100%;
+  overflow: auto;
+}
+
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  width: 30pt;
+  height: 30pt;
+  color: #333;
+  cursor: pointer;
+  background: red;
+  border: solid teal 2px;
+  border-radius: 50%;
+  border-color: black;
+}
+
+iframe {
+  width: 100vw;
+  height: 100vh;
+  border: none;
+}
