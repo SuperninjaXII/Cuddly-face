@@ -6,7 +6,21 @@ body {
   font-family: besake;
 
 }
-
+.toggle-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            z-index: 999;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+}
 canvas {
   position: fixed;
   top: 0;
@@ -159,7 +173,6 @@ header {
 .footer {
   background-color: var(--light-10);
   padding: 10px 0;
-  position: fixed;
   bottom: 0;
   width: 100%;
   text-align: center;

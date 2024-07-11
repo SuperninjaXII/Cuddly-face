@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Note</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-   <button id="toggleNoteApp" class="toggle-btn">Toggle Notes</button>
-    
     <div id="noteApp" class="note-app hidden">
         <button id="darkModeToggle">🌓</button>
         <h1>Quick Notes</h1>
         <textarea id="noteInput" placeholder="Enter your note here..."></textarea>
         <div id="notesContainer" class="notes-container"></div>
         <button id="saveNoteBtn">Save Note</button>
-    </div>
+        <div class="exportNote"> 
+        <button id="exportNotesBtn" class="export-btn">export notes</button>
+        </div>
+     </div>
 
     <div id="SavedNotePopView" class="SavedNotePopView hidden">
-        <button class="close-btn">&times;</button>
+    <div class="popup-header">
         <h2>Note Details</h2>
-        <div id="SavedNoteContent"></div>
-        <button id="editNoteBtn" class="edit-btn">Edit</button>
-        <button id="deleteNoteBtn" class="delete-btn">Delete</button>
+        <div class="popup-actions">
+            <button id="editNoteBtn" class="edit-btn">Edit</button>
+            <button id="deleteNoteBtn" class="delete-btn">Delete</button>
+            <button class="close-btn">&times;</button>
+        </div>
     </div>
+    <div id="SavedNoteContent"></div>
+</div>
 
     <div id="overlay" class="overlay hidden"></div>
-    <script src="./main.js"></script>
+  <script src="./main.js"></script>
 </body>
+
 </html>
