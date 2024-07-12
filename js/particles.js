@@ -59,16 +59,8 @@ for (let i = 0; i < numParticles; i++) {
 
   particles.push(new Particle(x, y, vx, vy, radius, red, green, blue, opacity));
 }
+const respawn=(p,i)=>{
 
-const loop = () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  for (let i = particles.length - 1; i >= 0; i--) {
-    let p = particles[i];
-    p.update();
-    p.draw();
-
-    // Remove particle if offscreen and respawn
     if (p.isOffscreen()) {
       particles.splice(i, 1);
 
@@ -85,17 +77,28 @@ const loop = () => {
       let opacity = Math.random();
 
       particles.push(new Particle(x, y, vx, vy, radius, red, green, blue, opacity));
+
     }
-  }
+}
+const loop = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+    p.update();
+    p.draw();
+
+    // Remove particle if offscreen and respawn
+  respawn(p,i)
 
   requestAnimationFrame(loop);
 };
-
+}
 loop();
 
 // Fade-in animation using GSAP
 gsap.fromTo('#cvs', { opacity: 0 }, {
   scrollTrigger: canvas,
   opacity: 1,
-  duration: 6,
+  duration: 10,
 });
