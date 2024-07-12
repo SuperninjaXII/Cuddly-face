@@ -1,3 +1,4 @@
+
 const canvas = document.querySelector('#cvs');
 const ctx = canvas.getContext("2d");
 
@@ -9,7 +10,7 @@ const particles = [];
 const numParticles = 300;
 
 class Particle {
-  constructor(x, y, vx, vy, radius, red, blue, green, opacity) {
+  constructor(x, y, vx, vy, radius, red, green, blue, opacity) {
     this.x = x;
     this.y = y;
     this.vx = vx;
@@ -18,8 +19,8 @@ class Particle {
     this.red = red;
     this.green = green;
     this.blue = blue;
-    this.opacity = opacity
-    this.opacityDecay = 1 / (60 * 60)
+    this.opacity = opacity;
+    this.opacityDecay = 1 / (60 * 60);
   }
 
   update() {
@@ -32,7 +33,6 @@ class Particle {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     ctx.fill();
-
   }
 
   isOffscreen() {
@@ -45,27 +45,19 @@ class Particle {
 
 // Initialize particles
 for (let i = 0; i < numParticles; i++) {
-  /*location*/
   let x = Math.random() * canvas.width;
   let y = Math.random() * canvas.height;
   let vx = (Math.random() - 0.5) * 2;
   let vy = (Math.random() - 0.5) * 2;
-  /*color*/
-  let red = (Math.random() * 255);
+  
+  let red = Math.random() * 255;
+  let green = Math.random() * 255;
+  let blue = Math.random() * 255;
+  
+  let radius = Math.random() * 5;
+  let opacity = Math.random();
 
-  let green = (Math.random() * 255);
-
-  let blue = (Math.random() * 255);
-
-  /*size*/
-  let Z = (Math.random() * 5);
-  let Alpha;
-  if (Z < 2.5) {
-    Alpha = (Math.random() * 0.5)
-  }
-  /*spawning*/
-  particles.push(new Particle(x, y, vx, vy, Z, red, green, blue, Alpha));
-
+  particles.push(new Particle(x, y, vx, vy, radius, red, green, blue, opacity));
 }
 
 const loop = () => {
@@ -76,9 +68,23 @@ const loop = () => {
     p.update();
     p.draw();
 
-    // Remove particle if offscreen
+    // Remove particle if offscreen and respawn
     if (p.isOffscreen()) {
       particles.splice(i, 1);
+
+      let x = Math.random() * canvas.width;
+      let y = Math.random() * canvas.height;
+      let vx = (Math.random() - 0.5) * 2;
+      let vy = (Math.random() - 0.5) * 2;
+
+      let red = Math.random() * 255;
+      let green = Math.random() * 255;
+      let blue = Math.random() * 255;
+
+      let radius = Math.random() * 5;
+      let opacity = Math.random();
+
+      particles.push(new Particle(x, y, vx, vy, radius, red, green, blue, opacity));
     }
   }
 
@@ -86,10 +92,10 @@ const loop = () => {
 };
 
 loop();
-//end of partcles
-//now begin the fading animation
+
+// Fade-in animation using GSAP
 gsap.fromTo('#cvs', { opacity: 0 }, {
-  scrollTrigger: canvas, // start animation when ".box" enters the viewport
+  scrollTrigger: canvas,
   opacity: 1,
   duration: 6,
 });
