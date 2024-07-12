@@ -3,7 +3,7 @@
   src: url("/fonts/Newton\ Howard\ Font.ttf");
 }
 
-.dark-theme {
+:root {
   --primary: #00C6CF;
   --secondary: #068488;
   --tertiary: #324B4C;
