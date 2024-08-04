@@ -1,3 +1,6 @@
+let x=(elem)=>{
+  return document.getElementById(elem)
+}
 // Utility function to save all settings
 const saveSettings = () => {
   const settings = {};
@@ -7,7 +10,7 @@ const saveSettings = () => {
   Object.keys(features).forEach(name => {
     settings[name] = {};
     features[name].settings.forEach(setting => {
-      const element = $(setting.id);
+      const element = x(setting.id);
       if (setting.type === 'file') {
         const file = element.files[0];
         if (file) {
@@ -48,7 +51,7 @@ const loadSettings = () => {
   Object.keys(features).forEach(name => {
     if (savedSettings[name]) {
       features[name].settings.forEach(setting => {
-        const element = $(setting.id);
+        const element = x(setting.id);
         if (setting.type === 'file') {
           if (savedSettings[name][setting.id]) {
             if (setting.id === 'profile-pic') {
@@ -57,9 +60,9 @@ const loadSettings = () => {
               element.parentNode.appendChild(img);
             } else if (setting.id === 'bg-pic') {
               // Set the background image
-              document.body.style.backgroundImage = `url(${savedSettings[name][setting.id]})`;
+              document.body.style.backgroundImage = `url(x{savedSettings[name][setting.id]})`;
             }
-            notify.show(`${setting.label} loaded from saved settings.`);
+            notify.show(`x{setting.label} loaded from saved settings.`);
           }
         } else {
           element.value = savedSettings[name][setting.id];
@@ -71,7 +74,6 @@ const loadSettings = () => {
 };
 
 // Utility functions
-const $ = (id) => document.getElementById(id);
 const create = (tag, attrs = {}, text = '') => {
   const el = document.createElement(tag);
   Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
@@ -81,7 +83,7 @@ const create = (tag, attrs = {}, text = '') => {
 
 // Notification module
 const notify = (() => {
-  const el = $('notify');
+  const el = x('notify');
   let timer;
   return {
     show: (msg, duration = 2000) => {
@@ -112,7 +114,7 @@ const createInput = (setting) => {
     input = create('input', { type: 'color', id: setting.id, class: 'input' });
   } else if (setting.type === 'range') {
     input = create('input', { type: 'range', id: setting.id, class: 'input', min: setting.min, max: setting.max, step: setting.step, value: setting.value });
-    const valueDisplay = create('span', { id: `${setting.id}-value` }, `${input.value}`);
+    const valueDisplay = create('span', { id: `x{setting.id}-value` }, `x{input.value}`);
     input.addEventListener('input', () => {
       valueDisplay.textContent = input.value;
     });
@@ -139,15 +141,15 @@ const features = {
       return group;
     },
     apply: function() {
-      const face = $('font-face').value;
-      const style = $('font-style').value;
-      const size = $('font-size').value;
+      const face = x('font-face').value;
+      const style = x('font-style').value;
+      const size = x('font-size').value;
       const allElements = document.querySelectorAll("*");
-      document.body.style.fontFamily = `${face}, sans-serif`;
+      document.body.style.fontFamily = `x{face}, sans-serif`;
       document.body.style.fontStyle = style;
       allElements.forEach(element => {
         if (!element.matches('h1, h2, h3, h4, h5, h6')) {
-          element.style.fontSize = `${size}px`;
+          element.style.fontSize = `x{size}px`;
         }
       });
     }
@@ -165,11 +167,11 @@ const features = {
       return group;
     },
     apply: function() {
-      const bg = $('bg-pic').files[0];
+      const bg = x('bg-pic').files[0];
       if (bg) {
         const reader = new FileReader();
         reader.onload = (e) => {
-          document.body.style.backgroundImage = `url(${e.target.result})`;
+          document.body.style.backgroundImage = `url(x{e.target.result})`;
           document.body.style.backgroundRepeat = "no-repeat";
           document.body.style.backgroundAttachment = "fixed";
           document.body.style.backgroundSize = "cover";
@@ -177,7 +179,7 @@ const features = {
         }
         reader.readAsDataURL(bg);
       }
-      const profilePic = $('profile-pic').files[0];
+      const profilePic = x('profile-pic').files[0];
       if (profilePic) {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -200,8 +202,8 @@ const features = {
       return group;
     },
     apply: function() {
-      const theme = $('theme').value;
-      const style = $('style').value;
+      const theme = x('theme').value;
+      const style = x('style').value;
       document.body.classList.remove('dark-theme', 'android');
 
       if (style === 'android') document.body.classList.add('android');
@@ -223,8 +225,8 @@ const features = {
       return group;
     },
     apply: function() {
-      const langApply = $('lang').value
-      const SettingsTitle = $('SettingsTitle')
+      const langApply = x('lang').value
+      const SettingsTitle = x('SettingsTitle')
       if (langApply === 'Bemba') {
         SettingsTitle.textContent = "Ama Setini"
       } else if (langApply === 'English') {
@@ -236,7 +238,7 @@ const features = {
 
 // Feature toggle function
 const enableFeatures = (featureList) => {
-  const container = $('settings');
+  const container = x('settings');
   container.innerHTML = '';
   featureList.forEach(name => {
     if (features[name]) {
@@ -253,7 +255,7 @@ const app = (() => {
 
     loadSettings();
 
-    $('save').addEventListener('click', () => {
+    x('save').addEventListener('click', () => {
       saveSettings()
       Object.values(features).forEach(feature => feature.apply());
       notify.show('Settings saved successfully!');
@@ -262,7 +264,7 @@ const app = (() => {
 
     // Initial theme setup
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      $('theme').value = 'auto';
+      x('theme').value = 'auto';
       features.theme.apply();
     }
   };

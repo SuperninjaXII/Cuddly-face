@@ -1,6 +1,6 @@
 #movableButton {
-  width: 12vw;
-  height: 12vw;
+  width: 12svw;
+  height: 12svw;
   border-radius: 50%;
   position: fixed;
   color: var(--light-10);
@@ -26,29 +26,31 @@
 .popup {
   display: none;
   position: fixed;
-  z-index: 999;
-  left: 0%;
-  top: 0%;
-  background-color: #fefefe;
-  width: 100%;
-  overflow: auto;
+  z-index: 10;
+  left: 1svw;
+  background-color: rgba(255, 255, 255,0.8);
+  max-width: 98svw;
+  
+  overflow-y: auto;
 }
-
-
+.dropInContainer{
+  display: flex;
+  width: 98svw;
+}
+.dropInContainer .package{
+  margin: auto;
+  overflow: auto;
+  z-index: 10;
+}
 .close {
   position: fixed;
   top: -16px;
-  right: 10px;
+  right: 10%;
   color: red;
   cursor: pointer;
   background: transparent;
   font-size:50px;
   padding: 0;
   margin: 0;
-}
-
-iframe {
-  width: 100vw;
-  height: 100vh;
-  border: none;
+  z-index: 11;
 }
